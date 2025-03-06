@@ -3,10 +3,15 @@
 {% block content %}
 <div class="article-details">
     <div class="article">
-        <img src="{{ article.thumb.url }}" alt="">
+        {% if article.image %}
+        <img src="{{ article.image.url }}" alt="Article Image">
+        {% else %}
+        <p>No image available.</p>
+        {% endif %}
+
         <h2 class="title">{{ article.title }}</h2>
         <p class="body">{{ article.body }}</p>
-        <p class="date">Create on: {{ article.date }} By {{ article.author.username }}</p>
+        <p class="date">Created on: {{ article.date }} By {{ article.author.username }}</p>
     </div>
 </div>
 
