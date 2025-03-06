@@ -119,14 +119,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 
-import os
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Stores collected static files
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Where static files are collected
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")  # This is your development static folder
+    os.path.join(BASE_DIR, "static")  # Tells Django where to find your styles
 ]
+
 
 
 
