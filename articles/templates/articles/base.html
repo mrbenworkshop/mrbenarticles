@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Articles</title>
+    <link rel="stylesheet" href="{% static 'articles/style.css' %}">
+    <link rel="shortcut icon" href="/media/default.png" type="image/x-icon">
+</head>
+<body>
+    <header class="header" id="header">
+        <h1 class="headerTitle"><a href="{% url 'home_page' %}">Articles</a></h1>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li>
+                        <form action="{% url 'accounts:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Log-Out</button>
+                        </form>
+                    </li>
+                    <li><a href="{% url 'articles:create' %}">New Article</a></li>
+                {% else %}
+                    <li><a href="{% url 'accounts:login' %}">Log-In</a></li>
+                    <li><a href="{% url 'accounts:signup' %}">Sign-In</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <a class="toTop" style="transform: rotateX(180deg);
+    z-index: 9;" href="#header">🔰</a>
+    <div class="wrapper">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="{% static 'articles/script.js' %}"></script>
+</body>
+</html>

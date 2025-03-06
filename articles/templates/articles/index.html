@@ -1,0 +1,16 @@
+{% extends 'articles/base.html' %}
+{% block content %}
+    <h1 class="index-title">Article List</h1>
+    <div class="articles">
+        {% for article in articles %}
+        <div class="article">
+            <h2 class="title"><a href="{% url 'articles:details' slug=article.slug %}">{{ article.title }}</a></h2>
+            <p class="body">{{ article.snippest }}</p>
+            <p class="date">{{ article.date }}</p>
+            <p class="author">Created by {{ article.author.username }}</p>  
+        </div>
+        {% empty %}
+        <h3 class="noArt">No Article</h3>
+        {% endfor %}
+    </div>
+{% endblock %}
