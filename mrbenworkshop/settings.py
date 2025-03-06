@@ -119,13 +119,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 
-STATIC_URL = "/static/"  # This is the URL path for static files
-STATIC_ROOT = os.path.join(BASE_DIR, "static")  # Your static folder
+import os
 
-# Optional: If you have other static folders, add them here
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Stores collected static files
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR, "static")  # This is your development static folder
 ]
+
 
 
 MEDIA_URL = "/media/"
